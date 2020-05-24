@@ -20,13 +20,22 @@ $mat-theming-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $mat-theming-theme: mat-light-theme($mat-theming-primary, $mat-theming-accent, $mat-theming-warn);
+$mat-theming-theme-dark: mat-dark-theme($mat-theming-primary, $mat-theming-accent, $mat-theming-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($mat-theming-theme);
+@include angular-material-theme($mat-theming-theme-dark);
 
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.theme-dark {
+  @include angular-material-theme($mat-theming-theme-dark);
+}
+
+.theme-light {
+  @include angular-material-theme($mat-theming-theme);
+}
