@@ -1,4 +1,4 @@
-import { Component, Inject, Renderer2 } from '@angular/core';
+import { Component, Inject, Renderer2, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -6,11 +6,16 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2
   ) { }
+
+  ngOnInit() {
+    this.renderer.setAttribute(this.document.body, 'class', 'theme-light');
+  }
 
   switchMode(isDarkMode: boolean) {
     const hostClass = isDarkMode ? 'theme-dark' : 'theme-light';
